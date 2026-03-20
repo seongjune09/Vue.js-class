@@ -22,7 +22,6 @@
               <h4 @click="모달창=true">{{ 원룸들.title }}</h4>
               <p>{{ 원룸들.content }} </p>
               <p>{{ 원룸들.price }} 만원</p>
-              <button @click="신고수[i]++"> 허위매물신고</button> <span>신고수: {{ 신고수[i] }}</span>
       </div>
     </main>
   </div>
