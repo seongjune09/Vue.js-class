@@ -1,72 +1,33 @@
-
 // App.vue
-
 <template>
-  <transition name="fade">
-    <Modal @closeModal="모달창 = false" :원룸들="원룸들" :상품번호="상품번호" :모달창="모달창"/>
-  </transition>
+  <nav class="navbar navbar-light bg-light px-3">
+    <span class="navbar-brand fw-bold">Vuelog</span>
+  </nav>
 
-  <div class="app">
-    <nav class="menu">
-      <a v-for="(작명1,작명2) in 메뉴들" :key="작명2">{{작명1}}</a>
-    </nav>
-    <Discount />
-
-    <button @click="PAsc" class="btn"> 가격 오름차순 정렬</button> 
-    <button @click="PDesc" class="btn"> 가격 내림차순 정렬</button>
-    <button @click="NAsc" class="btn"> 상품명 가나다순 정렬</button>
-    <button @click="NDesc" class="btn"> 상품명 가나다 역순 정렬</button>
-    <button @click="SBack" class="btn"> 되돌리기 </button>
-
-    <Card @openModal="모달창 = true; 상품번호=$event" :room="원룸들[index]" v-for="(원룸, index) in 원룸들" :key="index"/>
+  <div class="container mt-5">
+    <div class="text-center">
+      <h2>React 개발자의 블로그입니다</h2>
+      <p class="text-muted">- Vue로 만들었음 -</p>
+    </div>
   </div>
+
+  <List/>
 </template>
 
 <script>
-
-import data from '../assets/oneroom';
-import Modal from './Modal.vue';
-import Card from './Card.vue';
+import List from './List.vue';
+import data from './assets/blog';
 
 export default {
-  name : 'App',
-  data(){
+  name: 'App',
+  components: {
+    List
+  },
+  data() {
     return {
-      원룸들오리지널 : [...data],
-      상품번호 : 0,
-      원룸들 : data,
-      모달창 : false,
-      신고수 : [0,0,0,0,0,0],
-      메뉴들 : ['Home', 'Shop', 'About'],
-      price1 : 100,
-      price2 : 200,
-      price3 : 300,
-      products : ['해운대원룸', '에코델타시티원룸', '광안리원룸'],
+      블로그글: data,
     }
-  },
-  methods : {
-    increase(){
-      this.신고수 += 1;
-    },
-    PAsc(){
-      this.원룸들.sort((a, b) => a.price - b.price);
-    },
-    PDesc(){
-      this.원룸들.sort((a, b) => b.price - a.price);
-    },
-    NAsc(){
-      this.원룸들.sort((a, b) => a.title.localeCompare(b.title));
-    },
-    NDesc(){
-      this.원룸들.sort((a, b) => b.title.localeCompare(a.title));
-    },
-    SBack(){
-      this.원룸들 = [...this.원룸들오리지널];
-    },
-  },
-  components : {
-    Modal,
-    Card,
   }
 }
+
 </script>
