@@ -1,10 +1,8 @@
 import './assets/main.css'
-
 import { createApp } from 'vue'
-import App from './components/App.vue'
-import router from './router.js'
-
-import 'bootstrap/dist/css/bootstrap.min.css'
+import App from './App.vue'
 import 'bootstrap'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import 라우터 from './router.js'
 
-createApp(App).use(router).mount('#app')
+createApp(App).use(라우터).mount('#app')
