@@ -4,6 +4,13 @@
       <h3>{{ blog.title }}</h3>
       <p>{{ blog.content }}</p>
       <small>{{ blog.date }}</small>
+      <br>
+      <button 
+        class="btn btn-primary btn-sm mt-2"
+        @click="$router.push('/detail/' + index)"
+      >
+        상세보기
+      </button>
     </div>
   </div>
 </template>
