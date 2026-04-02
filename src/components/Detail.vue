@@ -13,10 +13,8 @@
 <script>
 export default {
   name: 'Detail',
-  data() {
-    return {
-      blog: { title: '글제목', content: '글설명~~' }
-    }
+  props: {
+    blogs: Array
   }
 }
 </script>
