@@ -13,9 +13,19 @@ const routes = [
     component: Home,
   },
   {
-    path: "/detail/:id",
+    path: "/detail/:id*",
     component: Detail,
-  }
+    children: [
+      {
+        path : "author"
+        component : Author,
+      },
+      {
+        path : "comment"
+        component : Comment,
+      },
+    ]
+  },
 ];
 
 const router = createRouter({

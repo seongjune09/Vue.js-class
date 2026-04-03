@@ -1,16 +1,18 @@
 <template>
-  <div class="list">
-    <div class="blog" v-for="(blog, index) in blogs" :key="index">
-      <h3>{{ blog.title }}</h3>
-      <p>{{ blog.content }}</p>
-      <small>{{ blog.date }}</small>
-      <br>
-      <button 
-        class="btn btn-primary btn-sm mt-2"
-        @click="$router.push('/detail/' + index)"
-      >
-        상세보기
-      </button>
+  <div class="container mt-4">
+    <div
+      class="card shadow-sm p-4 mb-3"
+      v-for="(blog, index) in blogs"
+      :key="index"
+    >
+      <h3 class="fw-bold">{{ blog.title }}</h3>
+      <hr>
+      <p class="text-muted">{{ blog.content }}</p>
+      <small class="text-secondary">📅 {{ blog.date }}</small>
+
+      <div class="mt-3">
+      <button class="btn btn-primary btn-sm mt-2" @click="$router.push('/detail/' + index)">상세보기</button>
+      </div>
     </div>
   </div>
 </template>
@@ -18,6 +20,10 @@
 <script>
 export default {
   name: 'List',
-  props: { blogs: Array },
+  props: {
+    blogs: Array,
+  },
 }
 </script>
+
+
