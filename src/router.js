@@ -4,19 +4,18 @@ import Home from './components/Home.vue';
 import Detail from './components/Detail.vue';
 
 const routes = [
-  { path: "/", component: Home },
-
-  { 
-    path: "/list", 
+  {
+    path: "/list",
     component: List,
-    props: route => ({ blogs: route.query.blogs })
   },
-
-  { 
-    path: "/detail/:id", 
+  {
+    path: "/",
+    component: Home,
+  },
+  {
+    path: "/detail/:id",
     component: Detail,
-    props: true
-  },
+  }
 ];
 
 const router = createRouter({
@@ -24,4 +23,4 @@ const router = createRouter({
   routes,
 });
 
-export default router;
+export default router; 
