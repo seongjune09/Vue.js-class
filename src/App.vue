@@ -32,18 +32,20 @@ export default {
   components: {
     Container
   },
-  data() {
-    return {
-      posts
-    };
-  },
-  methods:{
-    more() {
-      axios.get('https://qkrwpgus.github.io/vue/more0.json')
-      .then((result)=>{
+data() {
+  return {
+    posts,
+    moreCount: 0 
+  };
+},
+methods: {
+  more() {
+    axios.get(`https://qkrwpgus.github.io/vue/more${this.moreCount}.json`)
+      .then((result) => {
         this.posts.push(...result.data);
-      })  
-    }
+        this.moreCount++;  
+      })
   }
+}
 };
 </script>

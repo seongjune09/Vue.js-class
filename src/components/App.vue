@@ -1,33 +1,54 @@
-// App.vue
 <template>
-  <nav class="navbar navbar-light bg-light px-3">
-    <span class="navbar-brand fw-bold">Vuelog</span>
-  </nav>
+  <div>
+    <div class="header">
+      <ul class="header-button-left">
+        <li>Cancel</li>
+      </ul>
+      <ul class="header-button-right">
+        <li>Next</li>
+      </ul>
+      <img src="./assets/logo.svg" class="logo" />
+    </div>
 
-  <div class="container mt-5">
-    <div class="text-center">
-      <h2>React 개발자의 블로그입니다</h2>
-      <p class="text-muted">- Vue로 만들었음 -</p>
+    <Container :posts="posts" />
+    <button @click="more">더보기</button>
+
+    <div class="footer">
+      <ul class="footer-button-plus">
+        <input type="file" id="file" class="inputfile" />
+        <label for="file" class="input-plus">+</label>
+      </ul>
     </div>
   </div>
-
-  <List/>
 </template>
 
 <script>
-import List from './List.vue';
-import data from './assets/blog';
+import Container from './components/Container.vue';
+import posts from './Post.js';
+import axios from 'axios';
 
 export default {
   name: 'App',
   components: {
-    List
+    Container
   },
   data() {
     return {
-      블로그글: data,
+      posts,
+      moreCount: 0
+    };
+  },
+  methods: {
+    more() {
+      axios.get(`https://qkrwpgus.github.io/vue/more${this.moreCount}.json`)
+        .then((result) => {
+          this.posts.push(...result.data);
+          this.moreCount++;
+        })
+        .catch((err) => {
+          console.error('더보기 실패:', err);
+        });
     }
   }
-}
-
+};
 </script>

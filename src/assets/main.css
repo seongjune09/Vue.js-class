@@ -1,9 +1,12 @@
+//main.css
+
 .post {
   width: 100%;
 }
 
+/* 기존: background-image 고정 → 제거 */
 .profile {
-  background-image: url("https://picsum.photos/100?random=0");
+  /* background-image: url("https://picsum.photos/100?random=0"); */
   width: 30px;
   height: 30px;
   background-size: cover;
@@ -26,13 +29,14 @@
 }
 
 /* 기존: 고정 배경이미지 대신, img 태그로 보여주므로 flex 만 */
-/* .post-body {
+.post-body {
   /* background-image: url("https://picsum.photos/600?random=0"); */
-  /* height: 450px;
+  height: 450px;
   background-position: center;
-  background-size: cover; */
-/* } */ 
+  background-size: cover;
+}
 
+/* 본문 이미지는 img 태그에 맞게 스타일 */
 .post-body img {
   width: 100%;
   max-height: 450px;
